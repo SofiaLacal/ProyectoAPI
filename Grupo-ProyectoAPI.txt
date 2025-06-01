@@ -1,0 +1,9 @@
+Proyecto API:
+
+Grupo: Javier Monzón, Javier Martín, Sofia Lacal
+
+APIS a elegir: 
+	- https://rickandmortyapi.com/
+	- https://api.chucknorris.io/
+	- https://docs.consumet.org/
+	- https://jikan.moe/
