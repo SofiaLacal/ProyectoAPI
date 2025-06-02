@@ -5,4 +5,5 @@ Grupo: Javier Monzón, Javier Martín, Sofia Lacal
 APIS a elegir: 
 	- https://rickandmortyapi.com/
 	- https://api.chucknorris.io/
+	- https://publicapi.dev/shikimori-api
 
