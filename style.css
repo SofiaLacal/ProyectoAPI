@@ -24,8 +24,8 @@ input, button {
 }
 
 #imagenAPI {
-    width: 150px;
-    height: 150px;
+    width: 200px;
+    height: 200px;
 }
 
 #infoAPI {
@@ -34,4 +34,16 @@ input, button {
 
 #rojo {
     color: red;
+}
+
+.fila {
+    overflow: hidden;
+    display: flex;
+}
+
+.columna {
+    padding: 20px;
+    width: auto;
+    height: auto;
+    float: left;
 }
