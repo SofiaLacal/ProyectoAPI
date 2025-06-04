@@ -10,47 +10,31 @@
     
     <header>
         <h1>Bienvenido a la API de Rick & Morty </h1>
-        <p>Grupo: Javier Martín, Javier Monzón, Sofia Lacal</p>
+        <h3>Grupo: Javier Martín, Javier Monzón, Sofia Lacal</h3>
     </header>
     
     <article>
-        <section class="fila">
-            <div class="columna">
-                <p>Busca del número 1 al 826</p>
-                <input type="text" id="infoIntro" placeholder="Ej: 20">
+        <div>
+            <p>
+                Busca por número (del 1 al 826), por género (male, female, genderless, unknown) o 
+                por estado (alive, dead, unknown) 
+            </p>
+        </div>
+
+        <section>
+            <div id="cajaInfo">
+                <input type="text" id="infoIntro" placeholder="ID, género o estado">
                 <button id="btnPedir">Buscar</button>
-
-                <div id="cajaInfo">
-                    <img id="imagenAPI" alt="Imagen de personaje">
+                <div>
                     <div id="infoAPI"></div>
-                </div>
-            </div>
-
-            <div class="columna">
-                <p>Filtra por género</p>
-                <button id="btnPedir">Femenino</button>
-                <button id="btnPedir">Masculino</button>
-                <button id="btnPedir">Sin género</button>
-                <button id="btnPedir">Desconocido</button>
-                <div id="cajaInfo">
-                    <img id="imagenAPI" alt="Imagen de personaje">
                     <div id="infoGenero"></div>
-                </div>
-            </div>
-
-            <div class="columna">
-                <p>Filtra por estado</p>
-                <button id="btnPedir">Vivos</button>
-                <button id="btnPedir">Muertos</button>
-                <button id="btnPedir">Desconocido</button>
-                <div id="cajaInfo">
-                    <img id="imagenAPI" alt="Imagen de personaje">
                     <div id="infoEstado"></div>
                 </div>
+            </div>   
+            <div id="cajaInfo">
+                <img id="imagenAPI" alt="Imagen de Personaje"/>
             </div>
         </section>
-
-        
     </article>
 </body>
 </html>
