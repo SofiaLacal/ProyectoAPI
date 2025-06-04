@@ -7,17 +7,50 @@
     <script src="javascript.js"></script>
 </head>
 <body>
-        <h1>Bienvenido a la API de: </h1>
-        <h2>¿Qué quieres buscar?</h2>
+    
+    <header>
+        <h1>Bienvenido a la API de Rick & Morty </h1>
+        <p>Grupo: Javier Martín, Javier Monzón, Sofia Lacal</p>
+    </header>
+    
+    <article>
+        <section class="fila">
+            <div class="columna">
+                <p>Busca del número 1 al 826</p>
+                <input type="text" id="infoIntro" placeholder="Ej: 20">
+                <button id="btnPedir">Buscar</button>
 
-        <input type="text" id="infoIntro" placeholder="Ej: ">
-        <button id="btnPedir">Buscar</button>
+                <div id="cajaInfo">
+                    <img id="imagenAPI" alt="Imagen de personaje">
+                    <div id="infoAPI"></div>
+                </div>
+            </div>
 
-        <!-- Creo la estructura para poder tener la información de los Pokémon -->
-        <div id="cajaInfo">
-            <img id="imagenAPI" alt="Imagen de XXXXXX">
-            <div id="infoAPI"></div>
-            <div id="itemAPI"></div>
-        </div>
+            <div class="columna">
+                <p>Filtra por género</p>
+                <button id="btnPedir">Femenino</button>
+                <button id="btnPedir">Masculino</button>
+                <button id="btnPedir">Sin género</button>
+                <button id="btnPedir">Desconocido</button>
+                <div id="cajaInfo">
+                    <img id="imagenAPI" alt="Imagen de personaje">
+                    <div id="infoGenero"></div>
+                </div>
+            </div>
+
+            <div class="columna">
+                <p>Filtra por estado</p>
+                <button id="btnPedir">Vivos</button>
+                <button id="btnPedir">Muertos</button>
+                <button id="btnPedir">Desconocido</button>
+                <div id="cajaInfo">
+                    <img id="imagenAPI" alt="Imagen de personaje">
+                    <div id="infoEstado"></div>
+                </div>
+            </div>
+        </section>
+
+        
+    </article>
 </body>
 </html>

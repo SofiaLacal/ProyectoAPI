@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Rick and Morty API</title>
+  <style>
+    #rojo { color: red; }
+    img { max-width: 200px; }
+  </style>
+</head>
+<body>
+  <input type="text" id="infoIntro" placeholder="ID, género o estado">
+  <button id="btnPedir">Buscar</button>
+  <div>
+    <img id="imagenAPI" src="" alt="Imagen del personaje">
+  </div>
+  <div id="infoAPI"></div>
+  <div id="infoGenero"></div>
+  <div id="infoEstado"></div>
+
+  <script>
+    window.addEventListener("DOMContentLoaded", function() {
+      const btnPeticion = document.getElementById("btnPedir");
+      const inputInfo = document.getElementById("infoIntro");
+      const imagen = document.getElementById("imagenAPI");
+      const divInfo = document.getElementById("infoAPI");
+      const divGenero = document.getElementById("infoGenero");
+      const divEstado = document.getElementById("infoEstado");
+
+      btnPeticion.addEventListener("click", pedirInfo);
+
+      function pedirInfo() {
+        const valor = inputInfo.value.trim();
+        imagen.src = "";
+        divInfo.innerHTML = "";
+        divGenero.innerHTML = "";
+        divEstado.innerHTML = "";
+
+        // Si es un número, buscar por ID
+        if (!isNaN(valor)) {
+          fetch(`https://rickandmortyapi.com/api/character/${valor}`)
+            .then(res => {
+              if (!res.ok) throw new Error("Personaje no encontrado");
+              return res.json();
+            })
+            .then(data => {
+              mostrarDatos(data);
+            })
+            .catch(error => {
+              divInfo.innerHTML = `<p id="rojo">${error.message}</p>`;
+            });
+
+        // Buscar por género
+        } else if (["male", "female", "genderless", "unknown"].includes(valor.toLowerCase())) {
+          fetch(`https://rickandmortyapi.com/api/character/?gender=${valor}`)
+            .then(res => {
+              if (!res.ok) throw new Error("No se encontraron personajes con ese género");
+              return res.json();
+            })
+            .then(data => {
+              mostrarGenero(data.results);
+            })
+            .catch(error => {
+              divGenero.innerHTML = `<p id="rojo">${error.message}</p>`;
+            });
+
+        // Buscar por estado
+        } else if (["alive", "dead", "unknown"].includes(valor.toLowerCase())) {
+          fetch(`https://rickandmortyapi.com/api/character/?status=${valor}`)
+            .then(res => {
+              if (!res.ok) throw new Error("No se encontraron personajes con ese estado");
+              return res.json();
+            })
+            .then(data => {
+              mostrarEstado(data.results);
+            })
+            .catch(error => {
+              divEstado.innerHTML = `<p id="rojo">${error.message}</p>`;
+            });
+
+        } else {
+          divInfo.innerHTML = `<p id="rojo">Entrada inválida. Ingresa un ID numérico, género (male/female/genderless/unknown) o estado (alive/dead/unknown).</p>`;
+        }
+      }
+
+      function mostrarDatos(data) {
+        imagen.src = data.image;
+        divInfo.innerHTML = `
+          <p><strong>${data.name}</strong></p>
+          <p><strong>Género: </strong>${data.gender}</p>
+          <p><strong>Especie: </strong>${data.species}</p>
+          <p><strong>Estado: </strong>${data.status}</p>
+          <p><strong>Origen: </strong>${data.origin.name}</p>
+        `;
+      }
+
+      function mostrarGenero(lista) {
+        divGenero.innerHTML = "<h3>Personajes con ese género:</h3>";
+        lista.forEach(p => {
+          divGenero.innerHTML += `
+            <p><strong>${p.name}</strong> (${p.gender})</p>
+          `;
+        });
+      }
+
+      function mostrarEstado(lista) {
+        divEstado.innerHTML = "<h3>Personajes con ese estado:</h3>";
+        lista.forEach(p => {
+          divEstado.innerHTML += `
+            <p><strong>${p.name}</strong> (${p.status})</p>
+          `;
+        });
+      }
+    });
+  </script>
+</body>
+</html>
