@@ -1,17 +1,20 @@
 window.addEventListener("DOMContentLoaded", function () {
-    const btnPeticion = document.getElementById("btnPedir");
-    const inputInfo = document.getElementById("infoIntro");
-    const imagen = document.getElementById("imagenAPI");
-    const divInfo = document.getElementById("infoAPI");
-    const divGenero = document.getElementById("infoGenero");
-    const divEstado = document.getElementById("infoEstado");
+    let btnPeticion = document.getElementById("btnPedir");
+    let inputInfo = document.getElementById("infoIntro");
+    let imagen = document.getElementById("imagenAPI");
+    let divInfo = document.getElementById("infoAPI");
+    let divGenero = document.getElementById("infoGenero");
+    let divEstado = document.getElementById("infoEstado");
+
+    
 
     btnPeticion.addEventListener("click", function () {
-        const valor = inputInfo.value.trim().toLowerCase();
+        let valor = inputInfo.value.trim().toLowerCase();
         divInfo.innerHTML = "";
         divGenero.innerHTML = "";
         divEstado.innerHTML = "";
         imagen.src = "";
+        imagen.style.display = "none";
 
         // Buscar por ID
         if (!isNaN(valor)) {
@@ -56,12 +59,14 @@ window.addEventListener("DOMContentLoaded", function () {
                 });
 
         } else {
-            divInfo.innerHTML = `<p id="rojo">Entrada no válida. Usa un ID (número), género (male/female/genderless/unknown) o estado (alive/dead/unknown).</p>`;
+            divInfo.innerHTML = `<p id="rojo">Entrada no válida. 
+            Usa un ID (número), género (male/female/genderless/unknown) o estado (alive/dead/unknown).</p>`;
         }
     });
 
     function mostrarDatos(data) {
         imagen.src = data.image;
+        imagen.style.display = "block";
         divInfo.innerHTML = `
             <p><strong>${data.name}</strong></p>
             <p><strong>Género: </strong>${data.gender}</p>

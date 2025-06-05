@@ -13,7 +13,7 @@ input, button {
 }
 
 #cajaInfo {
-    margin-top: 1rem;
+    margin-top: 2rem;
     padding: 1rem;
     border: 1px solid #AA4EF5;
     background-color: aliceblue;
@@ -26,6 +26,8 @@ input, button {
 #imagenAPI {
     width: 250px;
     height: 250px;
+    margin: auto;
+    margin-top: 20px;
 }
 
 #infoAPI {
