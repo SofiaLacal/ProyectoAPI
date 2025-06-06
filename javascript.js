@@ -16,11 +16,15 @@ window.addEventListener("DOMContentLoaded", function () {
         imagen.src = "";
         imagen.style.display = "none";
 
+
         // Buscar por ID
         if (!isNaN(valor)) {
+
             fetch(`https://rickandmortyapi.com/api/character/${valor}`)
                 .then(res => {
-                    if (!res.ok) throw new Error("Personaje no encontrado");
+                    if (!res.ok){
+                        throw new Error("Personaje no encontrado");
+                    } 
                     return res.json();
                 })
                 .then(data => {
@@ -30,11 +34,15 @@ window.addEventListener("DOMContentLoaded", function () {
                     divInfo.innerHTML = `<p id="rojo">${error.message}</p>`;
                 });
 
+
         // Buscar por género
         } else if (["male", "female", "genderless", "unknown"].includes(valor)) {
+
             fetch(`https://rickandmortyapi.com/api/character/?gender=${valor}`)
                 .then(res => {
-                    if (!res.ok) throw new Error("No se encontraron personajes con ese género");
+                    if (!res.ok) {
+                        throw new Error("No se encontraron personajes con ese género");
+                    }
                     return res.json();
                 })
                 .then(data => {
@@ -44,11 +52,14 @@ window.addEventListener("DOMContentLoaded", function () {
                     divGenero.innerHTML = `<p id="rojo">${error.message}</p>`;
                 });
 
+                
         // Buscar por estado
         } else if (["alive", "dead", "unknown"].includes(valor)) {
             fetch(`https://rickandmortyapi.com/api/character/?status=${valor}`)
                 .then(res => {
-                    if (!res.ok) throw new Error("No se encontraron personajes con ese estado");
+                    if (!res.ok) {
+                        throw new Error("No se encontraron personajes con ese estado");
+                    }
                     return res.json();
                 })
                 .then(data => {
